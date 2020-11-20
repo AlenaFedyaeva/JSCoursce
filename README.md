@@ -1,1 +1,1 @@
-# JSCoursce
+# JSCourse
