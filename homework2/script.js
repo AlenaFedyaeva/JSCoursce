@@ -124,34 +124,19 @@ function division(a, b) {
 (использовать функции из задания 4) и вернуть полученное значение. */
 
 function mathOperation(arg1, arg2, operation) {
-
-    var operationName = function() {
-        // Initializes the enumerations
-        var enumList = [
-            "sum",
-            "minus",
-            "mult",
-            "div"
-        ];
-        enumObj = {};
-        enumList.forEach((item, index) => enumObj[item] = index + 1);
-
-        // Do not allow the object to be changed
-        Object.freeze(enumObj);
-        return enumObj;
-    }();
+    var operationName = { sum: "sum", minus: "minus", mult: "mult", div: "div" };
     let rez;
     switch (operation) {
-        case enumList.sum:
+        case operationName.sum:
             rez = sum(arg1, arg2);
             break;
-        case enumList.minus:
+        case operationName.minus:
             rez = minus(arg1, arg2);
             break;
-        case enumList.multpl:
+        case operationName.mult:
             rez = multpl(arg1, arg2);
             break;
-        case enumList.div:
+        case operationName.div:
             rez = division(arg1, arg2);
             break;
         default:
