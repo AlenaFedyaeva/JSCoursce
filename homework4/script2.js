@@ -10,14 +10,14 @@
 Объекты типа AttachedPost должны иметь метод makeTextHighlighted, который будет назначать свойству
 highlighted значение true. */
 
-let PostEs5 = (function() {
+var PostEs5 = (function() {
     function MyConstructor(author, text, date) {
         this.author = author;
         this.text = text;
         this.date = date;
     }
     MyConstructor.prototype.whoami = function whoami() {
-        console.log(`${this.name} - author name`);
+        console.log(`${this.name} - author name from Post`);
     };
     MyConstructor.prototype.edit = function edit(text) {
         this.text = text;
@@ -26,17 +26,22 @@ let PostEs5 = (function() {
 })();
 
 var AttachedPostEs5 = (function() {
-    this.highlighted = false;
-
-    function MyConstructor(author, text, date) {
+    function MyConstructor(author, text, date, highlighted) {
         PostEs5.call(this, author, text, date);
+        // Initialize subclass's own members
+        this.highlighted = highlighted;
     }
 
     // prototypal inheritance
     MyConstructor.prototype = Object.create(PostEs5.prototype);
     MyConstructor.prototype.constructor = PostEs5;
 
-    MyConstructor.prototype.makeTextHighlighted() = function makeTextHighlighted() {
+    MyConstructor.prototype.whoami = function whoami() {
+        MyConstructor.prototype.whoami.call(this);
+        console.log(`${this.name} - author name from AttachedPost`);
+    };
+
+    MyConstructor.prototype.makeTextHighlighted = function makeTextHighlighted() {
         this.highlighted = true;
     }
     return MyConstructor;
@@ -70,15 +75,15 @@ class AttachedPostEs6 extends PostEs6 {
 }
 
 function task1_2() {
-
-    const post1 = new PostEs5('author1', "text1 Post", new Date());
+    let timeInMs = Date.now();
+    let post1 = new PostEs5('author1', 'text1 Post', timeInMs);
     post1.whoami();
-    var postAtt1_2 = new AttachedPostEs5('author1_2', "text1_2 Post", new Date());
+    var postAtt1_2 = new AttachedPostEs5('author1_2', "text1_2 Post", timeInMs, false);
     postAtt1_2.whoami();
 
-    const post2 = new PostEs6('author1', "text1 Post", new Date());
+    const post2 = new PostEs6('author1', "text1 Post", timeInMs);
     post2.whoami();
-    var postAtt2_2 = new AttachedPostEs6('author1_2', "text1_2 Post", new Date());
+    var postAtt2_2 = new AttachedPostEs6('author1_2', "text1_2 Post", timeInMs);
     postAtt2_2.whoami();
 }
 

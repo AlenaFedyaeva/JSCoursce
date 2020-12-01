@@ -9,7 +9,7 @@ make25PercentDiscount не должен быть внутри функции-к�
 объект-прототип (как объект transport в уроке). */
 
 
-let ProductEs5 = (function() {
+var ProductEs5 = (function() {
     function MyConstructor(name, price) {
         this.name = name;
         this.price = price;
