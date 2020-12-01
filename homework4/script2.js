@@ -17,7 +17,7 @@ var PostEs5 = (function() {
         this.date = date;
     }
     MyConstructor.prototype.whoami = function whoami() {
-        console.log(`${this.name} - author name from Post`);
+        console.log(`${this.author} - author name from Post`);
     };
     MyConstructor.prototype.edit = function edit(text) {
         this.text = text;
@@ -37,8 +37,8 @@ var AttachedPostEs5 = (function() {
     MyConstructor.prototype.constructor = PostEs5;
 
     MyConstructor.prototype.whoami = function whoami() {
-        MyConstructor.prototype.whoami.call(this);
-        console.log(`${this.name} - author name from AttachedPost`);
+        // MyConstructor.prototype.whoami.call(this);
+        console.log(`${this.author} - author name from AttachedPost`);
     };
 
     MyConstructor.prototype.makeTextHighlighted = function makeTextHighlighted() {
@@ -57,16 +57,17 @@ class PostEs6 {
         this.text = text;
     }
     whoami() {
-        console.log(`${this.name} - author name from Post`);
+        console.log(`${this.author} - author name from Post`);
     }
 }
 class AttachedPostEs6 extends PostEs6 {
-    constructor() {
+    constructor(author, text, date) {
+        super(author, text, date)
         this.highlighted = false;
     }
     whoami() {
         super.whoami();
-        console.log(`${this.name} - author name from AttachedPost `);
+        console.log(`${this.author} - author name from AttachedPost `);
     }
 
     makeTextHighlighted() {
