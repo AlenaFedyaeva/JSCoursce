@@ -38,7 +38,7 @@ class ProductEs6 {
 
 
 function task1_1() {
-    var prod1 = new ProductEs6('chair', 5300);
+    var prod1 = new ProductEs5('chair', 5300);
     prod1.whoami();
     prod1.make25PercentDiscount();
 

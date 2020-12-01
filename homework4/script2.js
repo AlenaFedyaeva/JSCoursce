@@ -69,24 +69,17 @@ class AttachedPostEs6 extends PostEs6 {
     }
 }
 
-function task1_1() {
-    var prod1 = new ProductEs6('chair', 5300);
-    prod1.whoami();
-    prod1.make25PercentDiscount();
-
-    const prod2 = new ProductEs6("rrrrrrr", 5000)
-    prod2.whoami();
-    prod2.make25PercentDiscount();
-}
-
 function task1_2() {
 
     const post1 = new PostEs5('author1', "text1 Post", new Date());
     post1.whoami();
-    var postAtt1 = new AttachedPostEs5('author1_2', "text1_2 Post", new Date());
+    var postAtt1_2 = new AttachedPostEs5('author1_2', "text1_2 Post", new Date());
+    postAtt1_2.whoami();
+
+    const post2 = new PostEs6('author1', "text1 Post", new Date());
     post2.whoami();
-
-
+    var postAtt2_2 = new AttachedPostEs6('author1_2', "text1_2 Post", new Date());
+    postAtt2_2.whoami();
 }
 
 task1_2()
