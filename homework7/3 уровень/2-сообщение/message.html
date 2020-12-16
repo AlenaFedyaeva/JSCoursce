@@ -11,9 +11,8 @@
 <body>
     <button>Показать сообщение</button>
     <div class="message">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, aliquam enim voluptates quibusdam
-        perferendis sint ipsa, nulla quas doloribus nobis libero voluptatem unde inventore. Ut quas corporis fugit error
-        explicabo? Ipsa quos qui similique sequi officia quod ab reiciendis alias!
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, aliquam enim voluptates quibusdam perferendis sint ipsa, nulla quas doloribus nobis libero voluptatem unde inventore. Ut quas corporis fugit error explicabo? Ipsa quos qui similique sequi
+        officia quod ab reiciendis alias!
     </div>
 
     <!-- 
@@ -26,7 +25,14 @@
     -->
 
     <script>
-        
+        let btn = document.querySelector("button");
+        let div = document.querySelector("div.message");
+
+        btn.addEventListener("click", function(event) {
+            let audioElement = new Audio("notification.mp3");
+            audioElement.play();
+            div.style.transform = "translateY(calc(-100vh + 20px))";
+        });
     </script>
 </body>
 

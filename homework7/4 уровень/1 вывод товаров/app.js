@@ -11,8 +11,7 @@
 */
 
 const products = {
-    phones: [
-        {
+    phones: [{
             id: 1,
             name: "Смартфон 1",
             price: "23,99 р.",
@@ -32,8 +31,7 @@ const products = {
         },
     ],
 
-    tablets: [
-        {
+    tablets: [{
             id: 4,
             name: "Планшет 4",
             price: "99,99 р.",
@@ -47,8 +45,7 @@ const products = {
         },
     ],
 
-    tv: [
-        {
+    tv: [{
             id: 6,
             name: "Телевизор 6",
             price: "199,99 р.",
@@ -75,17 +72,24 @@ const products = {
     ],
 };
 
+let div = document.querySelector("div");
+let btn = document.querySelectorAll("button");
 
+btn.forEach(element => {
+    element.addEventListener("click", clickHandler);
+});
 /**
  * Эта функция должна вызываться при клике по кнопкам.
  * @param {MouseEvent} event
  */
 function clickHandler(event) {
     //вам нужно очищать содержимое .products
-    
+
+    div.innerHTML = "";
     //в showCategory надо передать строку с типом категории, тип берите
     //из атрибута data-type у кнопки, по которой кликнули.
-    
+    let category = event.target.getAttribute("data-type");
+    showCategory(category);
 }
 
 /**
@@ -96,7 +100,35 @@ function clickHandler(event) {
  * по которой кликнули.
  */
 function showCategory(category) {
-    
+    console.log(category);
+
+    let prodList;
+
+    switch (category) {
+        case "phones":
+            prodList = products.phones;
+            break;
+
+        case "tablets":
+            prodList = products.tablets;
+            break;
+        case "tv":
+            prodList = products.tv;
+            break;
+
+        default:
+            break;
+    }
+
+    prodList.forEach(element => {
+        let str = `<div class="product"> 
+        <div>${element.name}</div>
+        <img src="${element.imageUrl}" alt="">
+        <div>${element.price}</div>
+        <a href="https://example.com/producs/${element.id}">Подробнее</a>
+    </div> `;
+        div.innerHTML += str;
+    });
 }
 
 /**
